@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { ScrollView, View, ActivityIndicator } from 'react-native';
+import { ScrollView, View, ActivityIndicator, Pressable } from 'react-native';
 import { getLatestMovies } from '../lib/metacritic';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AnimatedMovieCard, MovieCard } from './MovieCard';
 import { FlatList } from 'react-native-web';
 import { Logo } from './Logo';
 import { Link } from 'expo-router';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { CircleInfoIcon } from './Icons';
+
 
 export function Main() {
   const [movies, setMovies] = useState([]);
@@ -23,8 +26,12 @@ export function Main() {
         <View style={{marginBottom: 20}}>
             <Logo />
         </View>
-        <Link href="/about" className='text-blue-400'>Concenos</Link>
-
+       
+        <Link asChild href="/about" >
+          <Pressable> 
+          <CircleInfoIcon/>
+          </Pressable>
+        </Link>
         {movies.length === 0 ? (
             <ActivityIndicator color={"red"} size={"large"}/>
         ): (

@@ -1,22 +1,32 @@
 import { useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, Image, Animated } from 'react-native';
+import { StyleSheet, Text, View, Image, Animated, Pressable } from 'react-native';
 import { Score } from './Score';
+import { Link } from 'expo-router';
+import {styled} from "nativewind"
+
+const StyledPressable = styled(Pressable);
+
 export function MovieCard({movie}){
     return (
-        <View 
-            className="flex-row bg-slate-500/10 p-4 rounded-xl gap-4 mb-10"
-            key={movie.id} >
-            <Image
-                source={{ uri: movie.image }}
-                style={styles.image} />
-            <View>
-              <Text className="mb-1" style={styles.original_title}>{movie.original_title}</Text>
-              <Text style={styles.release_date}>{movie.release_date}</Text>
-              <Score score={movie.popularity} maxScore={1000}/>
-              <Text className="mt-2 flex-shrink" style={styles.overview}>{movie.overview.slice(0,10)} ...</Text>
-            </View>     
-       
-        </View>
+      <Link asChild href={`/movie/${movie.id}`}>
+        <StyledPressable className="active::opacity-70 border border-black active:border-white/50 mb-2 bg-slate-500/10 p-4 rounded-xl gap-4 mb-10">
+
+          <View 
+              className="flex-row bg-slate-500/10 p-4 rounded-xl gap-4 mb-10"
+              key={movie.id} >
+              <Image
+                  source={{ uri: movie.image }}
+                  style={styles.image} />
+              <View className="flex-shrink">
+                <Text className="mb-1" style={styles.original_title}>{movie.original_title}</Text>
+                <Text style={styles.release_date}>{movie.release_date}</Text>
+                <Score score={movie.popularity} maxScore={1000}/>
+                <Text className="mt-2 flex-shrink" style={styles.overview}>{movie.overview.slice(0,10)} ...</Text>
+              </View>     
+        
+          </View>
+        </StyledPressable>
+      </Link>
     )
 }
 
