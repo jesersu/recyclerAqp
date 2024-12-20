@@ -9,7 +9,7 @@ import { Logo } from './Logo';
 import { Link } from 'expo-router';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { CircleInfoIcon } from './Icons';
-
+import { Screen } from './Screen';
 
 export function Main() {
   const [movies, setMovies] = useState([]);
@@ -22,16 +22,7 @@ export function Main() {
   }, []);
 
   return (
-    <View style={{flex: 1 , paddingTop:insets.top, paddingBottom:insets.bottom}}>
-        <View style={{marginBottom: 20}}>
-            <Logo />
-        </View>
-       
-        <Link asChild href="/about" >
-          <Pressable> 
-          <CircleInfoIcon/>
-          </Pressable>
-        </Link>
+    <Screen>
         {movies.length === 0 ? (
             <ActivityIndicator color={"red"} size={"large"}/>
         ): (
@@ -42,7 +33,7 @@ export function Main() {
             />
         )}
    
-    </View>
+    </Screen>
   );
 }
 

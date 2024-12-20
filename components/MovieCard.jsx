@@ -2,14 +2,11 @@ import { useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, Image, Animated, Pressable } from 'react-native';
 import { Score } from './Score';
 import { Link } from 'expo-router';
-import {styled} from "nativewind"
-
-const StyledPressable = styled(Pressable);
 
 export function MovieCard({movie}){
     return (
-      <Link asChild href={`/movie/${movie.id}`}>
-        <StyledPressable className="active::opacity-70 border border-black active:border-white/50 mb-2 bg-slate-500/10 p-4 rounded-xl gap-4 mb-10">
+      <Link asChild href={`/${movie.id}`}>
+        <Pressable className="active::opacity-70 border border-black active:border-white/50 mb-2 bg-slate-500/10 p-4 rounded-xl gap-4 mb-10">
 
           <View 
               className="flex-row bg-slate-500/10 p-4 rounded-xl gap-4 mb-10"
@@ -25,7 +22,7 @@ export function MovieCard({movie}){
               </View>     
         
           </View>
-        </StyledPressable>
+        </Pressable>
       </Link>
     )
 }
