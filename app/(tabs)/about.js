@@ -1,9 +1,9 @@
 import { Pressable, ScrollView, Text } from "react-native";
 import { Link } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
-import { ArrowLeftIcon } from "../components/Icons";
+import { ArrowLeftIcon } from "../../components/Icons";
 import { View } from "react-native-web";
-import { Screen } from "../components/Screen";
+import { Screen } from "../../components/Screen";
 
 export default function About() {
     return (
